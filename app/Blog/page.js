@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react';
 import styles from './Blog.module.css';
-import { client } from '../client'; 
+import { client } from '../../sanity/client'; 
 import imageUrlBuilder from '@sanity/image-url';
 import PortableText from "react-portable-text"
 import { FaLinkedin , FaTwitter , FaGithub } from "react-icons/fa";

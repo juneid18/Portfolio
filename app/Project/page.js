@@ -1,6 +1,6 @@
 'use client'
 import styles from '../components/Projects/projects.module.css'
-import {client} from '../client'
+import { client } from '../../sanity/client'; 
 import imageUrlBuilder from '@sanity/image-url'
 import { useEffect, useState } from 'react'
 import Image from 'next/image'

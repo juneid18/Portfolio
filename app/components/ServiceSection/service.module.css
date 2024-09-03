@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+  
+  .container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: "Space Mono", monospace;
+    font-weight: 500;
+    font-style: normal;
+  }
+  .container h2 {
+    text-align: center;
+    padding-top: 6%;
+    margin-bottom: 60px;
+    font-size: 1.8rem;
+    font-weight: 600;
+    position: relative;
+  }
+  .container h2::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 5px;
+    background-color:  #3f51b5;
+    border-radius: 20px;
+  }
+  .row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+  }
+  .row .service {
+    padding: 25px 15px;
+    background: transparent;
+    font-size: 15px;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.5s;
+  }
+  .row .service:hover {
+    color: #fff;
+    background-color:  #1f1f1fe7;
+    transform: scale(1.05);
+  }
+  .row .service i {
+    color:  #1f1f1fe7;
+    margin-bottom: 20px;
+    font-size: 40px;
+    transition: 0.5s;
+  }
+  .row .service:hover i {
+    color: #fff;
+  }
+  .row .service h2 {
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  .row .service h3 {
+    font-size: 1.2rem;
+  }
+  /* Responsive Media Queries */
+@media (max-width: 768px) {
+  .container {
+    padding: 8px;
+    width: 32rem;
+  }
+  .container h2::after {
+left: 6rem;
+  }
+  .container h2 {
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+    padding-top: 3%;
+  }
+
+  .row {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+
+  .row .service {
+    padding: 20px 10px;
+    font-size: 14px;
+  }
+
+  .row .service i {
+    font-size: 30px;
+    margin-bottom: 15px;
+  }
+
+  .row .service h2 {
+    margin-bottom: 15px;
+  }
+
+  .row .service h3 {
+    font-size: 1rem;
+  }
+}

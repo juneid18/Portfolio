@@ -1,0 +1,9 @@
+{
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "react/jsx-props-no-spreading": "off",
+    "react/prop-types": "off",
+    "jsx-a11y/alt-text": "off"
+    // Add more rules to disable as needed
+  }
+}

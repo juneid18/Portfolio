@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import styles from './projects.module.css'
-import { client } from '../../sanity/client'; 
+import { client } from '../../client'; 
 import imageUrlBuilder from '@sanity/image-url'
 import Link from 'next/link';
 

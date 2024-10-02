@@ -71,7 +71,7 @@ export default function Home() {
                 <a href="#projects">Projects</a>
               </li>
               <li>
-                <a href="#blog">Blogs</a>
+                <a href="#blog">Achievements</a>
               </li>
             </ul>
           </div>

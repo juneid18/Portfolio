@@ -95,6 +95,30 @@ const skills = () => {
             </div>
           </div>
         </div>
+
+        <div className={`${styles.sqlProg} ${styles.ProgWidth}`}>
+          <div className={styles.p}>
+            <p>MongoDB</p>
+            <p>85%</p>
+          </div>
+          <div className={styles.pp}>
+            <div className={styles.skillDiv}>
+              <span className={`${styles.skillBar} ${styles.sqlBar}`}></span>
+            </div>
+          </div>
+        </div>
+
+        <div className={`${styles.sqlProg} ${styles.ProgWidth}`}>
+          <div className={styles.p}>
+            <p>React Native</p>
+            <p>85%</p>
+          </div>
+          <div className={styles.pp}>
+            <div className={styles.skillDiv}>
+              <span className={`${styles.skillBar} ${styles.sqlBar}`}></span>
+            </div>
+          </div>
+        </div>
       </div>
       </div>
     </>

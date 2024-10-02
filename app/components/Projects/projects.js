@@ -1,66 +1,74 @@
 import { useEffect, useState } from 'react';
-import styles from './projects.module.css'
+import styles from './projects.module.css';
 import { client } from '../../client'; 
-import imageUrlBuilder from '@sanity/image-url'
-import Link from 'next/link';
+import imageUrlBuilder from '@sanity/image-url';
+import Image from 'next/image'
 
 const ProjectsPage = () => {
-  const [ProjectData, setProjectData] = useState([]);
+  const [projectData, setProjectData] = useState([]);
+  const [count, setCount] = useState(2);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     async function getProject() {
+      setLoading(true);
+      setError(null); // Reset error state
       try {
-        const query = `*[_type == 'project'][0..3]`;
+        const query = `*[_type == 'project'][0..${count}]`;
         const data = await client.fetch(query);
         
         if (!data) {
-          console.warn('Failed to fetch project data');
+          throw new Error('No data returned');
         }
         
-        return data;
+        setProjectData(data);
       } catch (error) {
         console.error('Error fetching project data:', error);
-        throw error; 
+        setError('Failed to load projects. Please try again later.');
+      } finally {
+        setLoading(false); // Set loading to false whether success or error
       }
     }
     
-    getProject().then((data) => setProjectData(data)).catch((error) => console.error('Error setting project data:', error));
-  }, []);
+    getProject();
+  }, [count]);
+console.log(projectData);
 
-
-  const builder = imageUrlBuilder(client)
+  const handleViewMore = () => {
+    setCount(prevCount => prevCount + 8);
+  };
+  
+  const builder = imageUrlBuilder(client);
 
   function urlFor(source) {
-    return builder.image(source)
+    return builder.image(source);
   }
-
   return (
-    <>
-     <div className={styles.container}>
-      <h1>Projects</h1>
+    <div className={styles.container}>
+      <h1 className={styles.h1}>Projects</h1>
+
+      {loading && <p>Loading projects...</p>}
+      {error && <p className={styles.error}>{error}</p>}
 
       <div className={styles.grid_container}>
-        {ProjectData.map((project, index) => (
-          <Link href='./Project'
-            key={index}
-            className={`${styles.grid_item} ${styles[`item${index + 1}`]}`}
-            style={{ backgroundImage: `url(${urlFor(project.poster).url()})`, textDecoration:'none'}}
-          >
-            <div className={styles.detail}>
-              <h2>{project.title}</h2>
-              <p>{project.detail}</p>
-            </div>
-          </Link>
-        ))}
+        {projectData.map((project) => (
+      <div className={styles.card}>
+      <Image src={urlFor(project.poster).url()} width={1000} height={500} alt="Project Poster" style={{backgroundClip: 'content-box' }} />
+      <div className={styles.detailcontainer}>
+        <h4><b>{project.title}</b></h4>
+        <p className={styles.detail}>{project.detail}</p>
+        <a href={project.url}><button className={styles.viewLive}>View Live</button></a>
       </div>
-      <Link style={{display:'flex', justifyContent:'center', textDecoration:'none'}} href='./Project'>
-        <button className={styles.viewMore}>
-          See More
-        </button>
-      </Link>
     </div>
-    </>
-  )
+        ))}
+
+      </div>
+      <button className={styles.viewMore} onClick={handleViewMore} disabled={loading}>
+        See More
+      </button>
+    </div>
+  );
 }
 
 export default ProjectsPage;

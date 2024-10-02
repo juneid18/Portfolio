@@ -53,7 +53,7 @@ console.log(projectData);
 
       <div className={styles.grid_container}>
         {projectData.map((project) => (
-      <div className={styles.card}>
+      <div className={styles.card} key={project._id}>
       <Image src={urlFor(project.poster).url()} width={1000} height={500} alt="Project Poster" style={{backgroundClip: 'content-box' }} />
       <div className={styles.detailcontainer}>
         <h4><b>{project.title}</b></h4>

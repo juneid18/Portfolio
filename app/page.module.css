@@ -43,12 +43,12 @@
     width: 160px;
     height: 36px;
     background: #333333;
-        position: fixed;
+    position: fixed;
     top: 0%;
     border-radius: 20px;
     margin: 4px;
     z-index: 1;
-    transition: 0.4s ease-in;
+    transition: 0.3s ease-out;
     box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 .navigation_container:hover{

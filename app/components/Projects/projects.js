@@ -33,8 +33,7 @@ const ProjectsPage = () => {
     
     getProject();
   }, [count]);
-console.log(projectData);
-
+  
   const handleViewMore = () => {
     setCount(prevCount => prevCount + 8);
   };

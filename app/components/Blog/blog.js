@@ -18,7 +18,7 @@ const Blog = () => {
   useEffect(() => {
     async function getBlog() {
       try {
-        const query = `*[_type == 'blog'][0..${count}]`;
+        const query = `*[_type == 'blog'][0..]`;
         const data = await client.fetch(query);
 
         if (!data) {
